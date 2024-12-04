@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Morse</title>
+</head>
+<body>
+    <h1>Código Morse: Congelador</h1>
+    <p>Reproduciendo el código Morse de la palabra "congelador".</p>
+    <button onclick="playMorse()">Reproducir Morse</button>
+
+    <script>
+        // Código Morse para "congelador"
+        const morseCode = "-.-. --- -. --. . .-.. .- -.. --- .-.";
+        const unitTime = 200; // Duración de un punto en milisegundos
+
+        function playMorse() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            let time = audioContext.currentTime;
+
+            function playTone(duration) {
+                const oscillator = audioContext.createOscillator();
+                oscillator.type = "sine";
+                oscillator.frequency.setValueAtTime(750, audioContext.currentTime); // Frecuencia del tono (750 Hz)
+                oscillator.connect(audioContext.destination);
+                oscillator.start(time);
+                time += duration / 1000; // Convertir ms a segundos
+                oscillator.stop(time);
+            }
+
+            function playMorseCharacter(character) {
+                if (character === ".") {
+                    playTone(unitTime); // Punto
+                } else if (character === "-") {
+                    playTone(unitTime * 3); // Raya
+                }
+                time += unitTime / 1000; // Pausa entre partes de un carácter
+            }
+
+            for (const char of morseCode) {
+                if (char === " ") {
+                    time += (unitTime * 3) / 1000; // Pausa entre letras
+                } else {
+                    playMorseCharacter(char);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
