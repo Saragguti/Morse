@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congelador en Código Morse</title>
+</head>
+<body>
+    <h1>Sonidos en Código Morse para "Congelador"</h1>
+
+    <script>
+        // Definir el alfabeto en código morse
+        const morseCode = {
+            "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
+            "G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
+            "M": "--", "N": "-.", "O": "---", "P":
+              
